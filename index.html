@@ -63,15 +63,15 @@
 <body class="bg-[#f8f9fa] text-gray-900 dark:bg-[#0d0d0e] dark:text-gray-100 min-h-screen antialiased flex flex-col justify-between">
 
     <!-- MAIN CONTENT CONTAINER -->
-    <div id="app" class="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <div id="app" class="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
 
-        <!-- HEADER BAR (Matching Exact Screenshot Layout) -->
-        <header class="flex items-center justify-between py-4 border-b border-gray-200/80 dark:border-zinc-800/80 mb-8">
+        <!-- HEADER BAR (Sticky Top Header with Glassmorphism) -->
+        <header class="sticky top-0 z-30 bg-[#f8f9fa]/90 dark:bg-[#0d0d0e]/90 backdrop-blur-md flex items-center justify-between py-2.5 border-b border-gray-200/80 dark:border-zinc-800/80 mb-4 transition-colors">
             <!-- Left: Avatar & Title Info -->
-            <div class="flex items-center gap-3.5">
-                <img id="site-avatar" src="" alt="Avatar" class="w-11 h-11 rounded-full object-cover border border-gray-200 dark:border-zinc-700 shadow-sm" onerror="this.src='https://placehold.co/100x100/18181b/ffffff?text=NS'">
+            <div class="flex items-center gap-3">
+                <img id="site-avatar" src="" alt="Avatar" class="w-10 h-10 rounded-full object-cover border border-gray-200 dark:border-zinc-700 shadow-sm" onerror="this.src='https://placehold.co/100x100/18181b/ffffff?text=NS'">
                 <div>
-                    <h1 id="site-header-title" class="font-bold text-xl leading-none tracking-tight text-gray-900 dark:text-white">Arsip Artikel</h1>
+                    <h1 id="site-header-title" class="font-bold text-lg leading-none tracking-tight text-gray-900 dark:text-white">Arsip Artikel</h1>
                 </div>
             </div>
 
@@ -107,33 +107,33 @@
 
         <!-- GALLERY VIEW (DEFAULT PAGE) -->
         <main id="gallery-view" class="block">
-            <div class="mb-6">
-                <span class="text-[11px] font-bold tracking-widest text-gray-400 dark:text-gray-500 uppercase block mb-1">LEARNING JOURNEY & INSIGHTS</span>
-                <h2 class="text-2xl sm:text-3xl font-extrabold text-gray-900 dark:text-white tracking-tight">Galeri Artikel & Tulisan</h2>
+            <div class="mb-3">
+                <span class="text-[10px] font-bold tracking-widest text-gray-400 dark:text-gray-500 uppercase block mb-0.5">LEARNING JOURNEY & INSIGHTS</span>
+                <h2 class="text-xl sm:text-2xl font-extrabold text-gray-900 dark:text-white tracking-tight">Galeri Artikel & Tulisan</h2>
             </div>
 
             <!-- SEARCH BAR -->
-            <div class="relative mb-6">
-                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
+            <div class="relative mb-3">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
                     </svg>
                 </div>
-                <input type="text" id="search-input" placeholder="Cari artikel..." class="w-full pl-10 pr-4 py-2.5 bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-gray-900 dark:focus:ring-zinc-400 text-gray-900 dark:text-white placeholder-gray-400 transition-all shadow-sm">
+                <input type="text" id="search-input" placeholder="Cari artikel..." class="w-full pl-9 pr-4 py-2 bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-gray-900 dark:focus:ring-zinc-400 text-gray-900 dark:text-white placeholder-gray-400 transition-all shadow-sm">
             </div>
 
             <!-- CATEGORY CHIPS SCROLLBAR -->
-            <div class="flex items-center gap-2 overflow-x-auto pb-4 mb-6 hide-scrollbar" id="categories-container">
+            <div class="flex items-center gap-1.5 overflow-x-auto pb-2 mb-4 hide-scrollbar" id="categories-container">
                 <!-- Dynamically populated chips -->
             </div>
 
-            <!-- ARTICLES GRID -->
-            <div id="articles-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- ARTICLES LIST (COMPACT CARD LAYOUT) -->
+            <div id="articles-grid" class="flex flex-col gap-3">
                 <!-- Dynamically populated article cards -->
             </div>
 
             <!-- EMPTY STATE -->
-            <div id="empty-state" class="hidden text-center py-16">
+            <div id="empty-state" class="hidden text-center py-10">
                 <svg class="w-12 h-12 mx-auto text-gray-400 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/>
                 </svg>
@@ -387,7 +387,6 @@
             const info = siteData.site_info;
             document.getElementById('site-header-title').innerText = info.title;
             document.getElementById('site-avatar').src = info.avatar;
-            document.getElementById('article-count-badge').innerText = `${siteData.articles.length} Artikel`;
 
             // Modal Info
             document.getElementById('modal-avatar').src = info.avatar;
@@ -446,6 +445,12 @@
                 return matchesCat && matchesSearch;
             });
 
+            // Dynamically update article badge count for active category/filter
+            const badgeEl = document.getElementById('article-count-badge');
+            if (badgeEl) {
+                badgeEl.innerText = `${filtered.length} Artikel`;
+            }
+
             if (filtered.length === 0) {
                 emptyState.classList.remove('hidden');
                 return;
@@ -455,28 +460,30 @@
 
             filtered.forEach(art => {
                 const card = document.createElement('div');
-                card.className = "bg-white dark:bg-zinc-900 rounded-2xl overflow-hidden border border-gray-100 dark:border-zinc-800 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between cursor-pointer group";
+                card.className = "bg-white dark:bg-zinc-900 rounded-xl p-3 border border-gray-100 dark:border-zinc-800/80 shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer group flex flex-row items-center gap-3 sm:gap-4";
                 
                 card.innerHTML = `
-                    <div>
-                        <!-- Thumbnail Image -->
-                        <div class="overflow-hidden aspect-[16/10] bg-gray-100 dark:bg-zinc-800 relative">
-                            <img src="${art.image}" alt="${art.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onerror="this.src='https://placehold.co/600x380/18181b/ffffff?text=Cover+Artikel'">
-                        </div>
-                        
-                        <!-- Content -->
-                        <div class="p-5">
-                            <span class="text-[11px] font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider block mb-1.5">${art.category}</span>
-                            <h3 class="font-bold text-base sm:text-lg text-gray-900 dark:text-white leading-snug group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors mb-2">${art.title}</h3>
-                            <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 line-clamp-2 leading-relaxed mb-4">${art.excerpt}</p>
-                        </div>
+                    <!-- Thumbnail Image (Persegi Panjang Landscape Compact) -->
+                    <div class="w-28 sm:w-44 h-20 sm:h-28 flex-shrink-0 overflow-hidden rounded-lg bg-gray-100 dark:bg-zinc-800 relative">
+                        <img src="${art.image}" alt="${art.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" onerror="this.src='https://placehold.co/600x380/18181b/ffffff?text=Cover+Artikel'">
                     </div>
+                    
+                    <!-- Content -->
+                    <div class="flex-1 min-w-0 flex flex-col justify-between h-full py-0.5">
+                        <div>
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="text-[10px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">${art.category}</span>
+                                <span class="text-gray-300 dark:text-zinc-700 text-[10px]">•</span>
+                                <span class="text-[10px] text-gray-400 dark:text-gray-500 font-medium">${art.date}</span>
+                            </div>
+                            <h3 class="font-bold text-xs sm:text-base text-gray-900 dark:text-white leading-snug group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors line-clamp-2 mb-1">${art.title}</h3>
+                            <p class="text-[11px] sm:text-xs text-gray-500 dark:text-gray-400 line-clamp-2 sm:line-clamp-2 leading-relaxed hidden sm:block">${art.excerpt}</p>
+                        </div>
 
-                    <!-- Card Footer Meta -->
-                    <div class="px-5 pb-5 pt-0 flex items-center text-[11px] text-gray-400 dark:text-gray-500 gap-2 font-medium border-t border-gray-50 dark:border-zinc-800/40 mt-auto pt-3">
-                        <span>${art.date}</span>
-                        <span>•</span>
-                        <span>${art.read_time}</span>
+                        <!-- Card Footer Meta -->
+                        <div class="mt-1 flex items-center text-[10px] sm:text-[11px] text-gray-400 dark:text-gray-500 font-medium gap-2">
+                            <span>${art.read_time}</span>
+                        </div>
                     </div>
                 `;
 
